@@ -1,0 +1,14 @@
+- name: Deploy RKE2
+  hosts: all
+  become: yes
+  vars:
+    rke2_ha_mode: true
+    rke2_api_ip : 192.168.1.170
+    rke2_download_kubeconf: true
+    rke2_ha_mode_kubevip: true
+    rke2_ha_mode_keepalived: false
+    rke2_loadbalancer_ip_range: 192.168.1.171-192.168.1.179
+    rke2_server_node_taints:
+      - 'CriticalAddonsOnly=true:NoExecute'
+  roles:
+     - role: rke2

@@ -1,0 +1,22 @@
+[masters]
+master-01  ansible_host=192.168.1.157 rke2_type=server
+master-02  ansible_host=192.168.1.158 rke2_type=server
+master-03  ansible_host=192.168.1.159 rke2_type=server
+
+[workers]
+worker-01  ansible_host=192.168.1.160 rke2_type=agent
+worker-02  ansible_host=192.168.1.161 rke2_type=agent
+worker-03  ansible_host=192.168.1.162 rke2_type=agent
+worker-04  ansible_host=192.168.1.163 rke2_type=agent
+worker-05  ansible_host=192.168.1.164 rke2_type=agent
+
+
+[masters:vars]
+ansible_user=k3s
+
+[workers:vars]
+ansible_user=k3s
+
+[k8s_cluster:children]
+masters
+workers
